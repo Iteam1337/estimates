@@ -1,4 +1,4 @@
-*Looking for the site? Go here --> [Priskalkylator](http://estimates.iteam.life)*
+*Looking for the site? Go here --> [Priskalkylator](http://estimat.iteam.life)*
 
 ---
 
