@@ -1,5 +1,6 @@
 <script>
 	import { Roles } from './data/roles.js'
+	import { Rate } from './data/rate.js'
 	
 	const estimate = {}
 	Object.keys(Roles).forEach(role => {
@@ -64,6 +65,23 @@
 		hours: 0,
 		rate: 0,
 	}
+
+	const validateRole = e => {
+		// TODO: Validate input.
+		summarize()
+	}
+
+	const summarize = () => {
+		summary.roles = Object.keys(estimate).reduce((a, role) => {
+			return a + estimate[role]
+		}, 0)
+
+		summary.hours = Object.keys(week).reduce((a, day) => {
+			return a + week[day].am.hours * 4 + week[day].pm.hours * 4
+		}, 0)
+
+		summary.rate = summary.hours * Rate
+	}
 </script>
 
 <main>
@@ -72,50 +90,46 @@
 	<hr />
 	<h2>Roller</h2>
 	{#each Object.keys(Roles) as role, i}
-		{role}: <input type="number" bind:value={estimate[role]} />
+		{role}: <input type="number" bind:value={estimate[role]} on:change={validateRole} />
 		{#if i+1 % 3 === 3}
 			<br />
 		{/if}
 	{/each}
 
 	<hr />
-	<h3>Vecka</h3>
-	<div>
-		<button>Tick</button>
-		<button>Tock</button>
-	</div>
+	<h2>Vecka</h2>
 	<div>
 		<span class="weekday">
 			Måndag<br />
-			<input type="number" bind:value={week.mon.am.hours} /><br />
-			<input type="number" bind:value={week.mon.pm.hours} /><br />
+			<input type="number" bind:value={week.mon.am.hours} on:change={summarize} /><br />
+			<input type="number" bind:value={week.mon.pm.hours} on:change={summarize} /><br />
 		</span>
 		<span class="weekday">
 			Tisdag<br />
-			<input type="number" bind:value={week.tue.am.hours} /><br />
-			<input type="number" bind:value={week.tue.pm.hours} /><br />
+			<input type="number" bind:value={week.tue.am.hours} on:change={summarize} /><br />
+			<input type="number" bind:value={week.tue.pm.hours} on:change={summarize} /><br />
 		</span>
 		<span class="weekday">
 			Onsdag<br />
-			<input type="number" bind:value={week.wed.am.hours} /><br />
-			<input type="number" bind:value={week.wed.pm.hours} /><br />
+			<input type="number" bind:value={week.wed.am.hours} on:change={summarize} /><br />
+			<input type="number" bind:value={week.wed.pm.hours} on:change={summarize} /><br />
 		</span>
 		<span class="weekday">
 			Torsdag<br />
-			<input type="number" bind:value={week.thu.am.hours} /><br />
-			<input type="number" bind:value={week.thu.pm.hours} /><br />
+			<input type="number" bind:value={week.thu.am.hours} on:change={summarize} /><br />
+			<input type="number" bind:value={week.thu.pm.hours} on:change={summarize} /><br />
 		</span>
 		<span class="weekday">
 			Fredag<br />
-			<input type="number" bind:value={week.fri.am.hours} /><br />
-			<input type="number" bind:value={week.fri.pm.hours} /><br />
+			<input type="number" bind:value={week.fri.am.hours} on:change={summarize} /><br />
+			<input type="number" bind:value={week.fri.pm.hours} on:change={summarize} /><br />
 		</span>
 	</div>
 
 	<hr />
-	<h3>Summering</h3>
+	<h2>Summering</h2>
 	<p>
-		Valt team består av {summary.roles} roller som lägger {summary.hours} timmar i veckan.
+		Valt team består av {summary.roles} roller som tillsammans lägger {summary.hours} timmar i veckan.
 	</p>
 	<p>
 		Förväntad månadskostnad är {summary.rate} kr i veckan.
