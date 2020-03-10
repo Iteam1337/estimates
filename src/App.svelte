@@ -86,14 +86,14 @@
 </script>
 
 <main>
-	<h1>Estimat</h1>
+	<h1>Priskalkylator</h1>
 
-	<hr />
 	<h2>Roller</h2>
+	<hr />
 	<Team estimate={estimate} roles={Roles} on:estimateUpdated={summarize} />
 
-	<hr />
 	<h2>Vecka</h2>
+	<hr />
 	<div>
 		<span class="weekday">
 			Måndag<br />
@@ -122,8 +122,8 @@
 		</span>
 	</div>
 
-	<hr />
 	<h2>Summering</h2>
+	<hr />
 	<p>
 		Valt team består av {summary.roles} roller som tillsammans lägger {summary.hours} timmar i veckan.
 	</p>
@@ -138,13 +138,6 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 3em;
-		font-weight: 100;
 	}
 
 	input[type=number] {
