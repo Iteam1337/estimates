@@ -1,4 +1,5 @@
 <script>
+	import Summary from './Summary.svelte'
 	import Team from './Team.svelte'
 	import Week from './Week.svelte'
 
@@ -95,12 +96,7 @@
 
 	<h2>Summering</h2>
 	<hr />
-	<p>
-		Valt team består av {summary.roles} roller som tillsammans lägger {summary.hours} timmar i veckan.
-	</p>
-	<p>
-		Förväntad månadskostnad är {summary.rate} kr i veckan.
-	</p>
+	<Summary summary={summary} />
 </main>
 
 <style>
