@@ -1,5 +1,7 @@
 <script>
 	import Team from './Team.svelte'
+	import Week from './Week.svelte'
+
 	import { Roles } from './data/roles.js'
 	import { Rate } from './data/rate.js'
 
@@ -67,11 +69,6 @@
 		rate: 0,
 	}
 
-	const validateRole = e => {
-		// TODO: Validate input.
-		summarize()
-	}
-
 	const summarize = () => {
 		summary.roles = Object.keys(estimate).reduce((a, role) => {
 			return a + estimate[role]
@@ -94,33 +91,7 @@
 
 	<h2>Vecka</h2>
 	<hr />
-	<div>
-		<span class="weekday">
-			Måndag<br />
-			<input type="number" bind:value={week.mon.am.hours} on:change={summarize} /><br />
-			<input type="number" bind:value={week.mon.pm.hours} on:change={summarize} /><br />
-		</span>
-		<span class="weekday">
-			Tisdag<br />
-			<input type="number" bind:value={week.tue.am.hours} on:change={summarize} /><br />
-			<input type="number" bind:value={week.tue.pm.hours} on:change={summarize} /><br />
-		</span>
-		<span class="weekday">
-			Onsdag<br />
-			<input type="number" bind:value={week.wed.am.hours} on:change={summarize} /><br />
-			<input type="number" bind:value={week.wed.pm.hours} on:change={summarize} /><br />
-		</span>
-		<span class="weekday">
-			Torsdag<br />
-			<input type="number" bind:value={week.thu.am.hours} on:change={summarize} /><br />
-			<input type="number" bind:value={week.thu.pm.hours} on:change={summarize} /><br />
-		</span>
-		<span class="weekday">
-			Fredag<br />
-			<input type="number" bind:value={week.fri.am.hours} on:change={summarize} /><br />
-			<input type="number" bind:value={week.fri.pm.hours} on:change={summarize} /><br />
-		</span>
-	</div>
+	<Week week={week} on:estimateUpdated={summarize} />
 
 	<h2>Summering</h2>
 	<hr />
@@ -138,15 +109,6 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-	}
-
-	input[type=number] {
-		width: 100px;
-	}
-
-	span.weekday {
-		display: inline-block;
-		margin: 2px 4px;
 	}
 
 	@media (min-width: 640px) {
