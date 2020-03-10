@@ -1,29 +1,28 @@
 <script>
-  export let estimate
   export let roles
 
   import { createEventDispatcher } from 'svelte'
 	const dispatch = createEventDispatcher()
 
-  const validateRole = e => {
-    // TODO: Validate input.
-		dispatch('estimateUpdated', {});
+  const add = role => {
+		dispatch('addRole', {
+			role
+		})
 	}
 </script>
 
-{#each Object.keys(roles) as role, i}
-		<span class="role">
-			{role}<br/><input type="number" bind:value={estimate[role]} on:change={validateRole} />
-		</span>
-	{/each}
+<p>
+	Klicka på önskade roller för att lägga till dem i teamet.
+</p>
+{#each Object.keys(roles) as role}
+	<button class="available" on:click={() => {add(role)}}>{role}</button>
+{/each}
 
 <style>
-  input[type=number] {
-		width: 110px;
+  button {
+		border: 0px;
+		background-color: rgba(71, 253, 164, 0.4);
+		margin: 0 2px;
+		padding: 8px 10px;
 	}
-
-	span.role {
-		display: inline-block;
-		margin: 0 10px;
-	}
-  </style>
+</style>

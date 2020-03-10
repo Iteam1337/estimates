@@ -1,4 +1,5 @@
 <script>
+	import Plan from './Plan.svelte'
 	import Summary from './Summary.svelte'
 	import Team from './Team.svelte'
 	import Week from './Week.svelte'
@@ -11,7 +12,7 @@
 		estimate[role] = 0
 	})
 
-	const week = {
+	const weekTemplate = {
 		mon: {
 			am: {
 				tt: 'tick',
@@ -64,22 +65,55 @@
 		},
 	}
 
+	let week = JSON.parse(JSON.stringify(weekTemplate))
+
 	const summary = {
 		roles: 0,
 		hours: 0,
 		rate: 0,
 	}
 
+	let team = []
+	const addRole = ({ detail }) => {
+		team.push({
+			role: detail.role,
+			week: {
+				mon: { am: false, pm: false },
+				tue: { am: false, pm: false },
+				wed: { am: false, pm: false },
+				thu: { am: false, pm: false },
+				fri: { am: false, pm: false },
+			},
+		})
+		team = team // NOTE: Svelte does not trigger on array.push()
+	}
+
 	const summarize = () => {
-		summary.roles = Object.keys(estimate).reduce((a, role) => {
-			return a + estimate[role]
-		}, 0)
+		summary.roles = team.length
+
+		// Reset week.
+		week = JSON.parse(JSON.stringify(weekTemplate))
+		
+		// Reset rate.
+		summary.rate = 0
+
+		team.forEach(member => {
+			Object.keys(member.week).forEach(day => {
+				if (member.week[day].am) {
+					week[day].am.hours += 4
+					summary.rate += Roles[member.role].rate * 4
+				}
+
+				if (member.week[day].pm) {
+					week[day].pm.hours += 4
+					summary.rate += Roles[member.role].rate * 4
+				}
+			})
+		})
 
 		summary.hours = Object.keys(week).reduce((a, day) => {
-			return a + week[day].am.hours * 4 + week[day].pm.hours * 4
+			return a + week[day].am.hours + week[day].pm.hours
 		}, 0)
-
-		summary.rate = summary.hours * Rate
 	}
 </script>
 
@@ -88,14 +122,15 @@
 
 	<h2>Roller</h2>
 	<hr />
-	<Team estimate={estimate} roles={Roles} on:estimateUpdated={summarize} />
+	<Team roles={Roles} on:addRole={addRole} />
 
-	<h2>Vecka</h2>
+	<h2>Tid</h2>
 	<hr />
-	<Week week={week} on:estimateUpdated={summarize} />
+	<Plan team={team} on:estimateUpdated={summarize} />
 
 	<h2>Summering</h2>
 	<hr />
+	<Week week={week} on:estimateUpdated={summarize} readonly={true} />
 	<Summary summary={summary} />
 </main>
 
