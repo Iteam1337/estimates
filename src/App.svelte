@@ -5,7 +5,6 @@
 	import Week from './Week.svelte'
 
 	import { Roles } from './data/roles.js'
-	import { Rate } from './data/rate.js'
 
 	const estimate = {}
 	Object.keys(Roles).forEach(role => {
@@ -132,6 +131,13 @@
 	<hr />
 	<Week week={week} on:estimateUpdated={summarize} readonly={true} />
 	<Summary summary={summary} />
+
+	<h2>Information</h2>
+	<hr />
+	{#each Object.keys(Roles) as role}
+		<h3>{role}</h3>
+		<p>{Roles[role].description}</p>
+	{/each}
 </main>
 
 <style>

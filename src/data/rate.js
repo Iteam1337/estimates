@@ -1,1 +1,0 @@
-export const Rate = 1000
