@@ -1,7 +1,8 @@
 <script>
+	import Team from './Team.svelte'
 	import { Roles } from './data/roles.js'
 	import { Rate } from './data/rate.js'
-	
+
 	const estimate = {}
 	Object.keys(Roles).forEach(role => {
 		estimate[role] = 0
@@ -89,11 +90,7 @@
 
 	<hr />
 	<h2>Roller</h2>
-	{#each Object.keys(Roles) as role, i}
-		<span class="role">
-			{role}<br/><input type="number" bind:value={estimate[role]} on:change={validateRole} />
-		</span>
-	{/each}
+	<Team estimate={estimate} roles={Roles} on:estimateUpdated={summarize} />
 
 	<hr />
 	<h2>Vecka</h2>
@@ -157,11 +154,6 @@
 	span.weekday {
 		display: inline-block;
 		margin: 2px 4px;
-	}
-
-	span.role {
-		display: inline-block;
-		margin: 0 10px;
 	}
 
 	@media (min-width: 640px) {
