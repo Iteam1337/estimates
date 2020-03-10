@@ -90,10 +90,9 @@
 	<hr />
 	<h2>Roller</h2>
 	{#each Object.keys(Roles) as role, i}
-		{role}: <input type="number" bind:value={estimate[role]} on:change={validateRole} />
-		{#if i+1 % 3 === 3}
-			<br />
-		{/if}
+		<span class="role">
+			{role}<br/><input type="number" bind:value={estimate[role]} on:change={validateRole} />
+		</span>
 	{/each}
 
 	<hr />
@@ -152,11 +151,17 @@
 	}
 
 	input[type=number] {
-		width: 80px;
+		width: 100px;
 	}
 
 	span.weekday {
 		display: inline-block;
+		margin: 2px 4px;
+	}
+
+	span.role {
+		display: inline-block;
+		margin: 0 10px;
 	}
 
 	@media (min-width: 640px) {
