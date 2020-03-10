@@ -136,7 +136,10 @@
 	<hr />
 	{#each Object.keys(Roles) as role}
 		<h3>{role}</h3>
-		<p>{Roles[role].description}</p>
+		<p>
+			{Roles[role].description}<br /><br />
+			Pris: {Roles[role].rate} kr/h
+		</p>
 	{/each}
 </main>
 
