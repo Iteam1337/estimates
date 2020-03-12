@@ -1,6 +1,8 @@
 <script>
   export let team
-	import WeekBlocks from './WeekBlocks.svelte'
+  import WeekBlocks from './WeekBlocks.svelte'
+  import { Templates } from './data/templates.js'
+
   const selected = 0
 
   import { createEventDispatcher } from 'svelte'
@@ -10,29 +12,6 @@
 		dispatch('estimateUpdated', {});
   }
   
-  const templates = [
-    {
-      name: 'En dag',
-      days: 1,
-      full: ['Backend', 'Frontend', 'UX'],
-    },
-    {
-      name: 'Två dagar',
-      days: 2,
-      full: ['Backend', 'Frontend', 'UX'],
-    },
-    {
-      name: 'Tre dagar',
-      days: 3,
-      full: ['Backend', 'Frontend', 'UX'],
-    },
-    {
-      name: 'Fyra dagar',
-      days: 4,
-      full: ['Backend', 'Frontend', 'UX'],
-    },
-  ]
-
   const prePlan = template => {
     // Go through each team member.
     team.forEach((member, i) => {
@@ -63,7 +42,7 @@
     Fyll veckan med en föreslagen plan
   </p>
   <p>
-    {#each templates as template}
+    {#each Templates.Days as template}
       <button on:click={() => prePlan(template)}>{template.name}</button>
     {/each}
   </p>

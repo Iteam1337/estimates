@@ -2,6 +2,7 @@
 	export let roles
 	export let memberCount
 
+  import { Templates } from './data/templates.js'
   import { createEventDispatcher } from 'svelte'
 	const dispatch = createEventDispatcher()
 
@@ -17,32 +18,6 @@
 				role
 			})
 		})
-	}
-
-	const templates = {
-		API: [
-			'Backend',
-			'Backend',
-			'Backend',
-			'DevOps',
-			'TeamCoach',
-		],
-		APP: [
-			'Backend',
-			'Frontend',
-			'DevOps',
-			'TeamCoach',
-			'UX',
-		],
-		Labb: [
-			'Backend',
-			'Backend',
-			'Frontend',
-			'DevOps',
-			'TeamCoach',
-			'UX',
-			'UX',
-		]
 	}
 </script>
 
