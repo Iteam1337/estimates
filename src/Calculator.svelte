@@ -118,7 +118,7 @@
 
 <h2>Team</h2>
 <hr />
-<Team roles={Roles} on:addRole={addRole} />
+<Team roles={Roles} on:addRole={addRole} memberCount={team.length} />
 
 <h2>Tid</h2>
 <hr />
