@@ -15,12 +15,10 @@
   const prePlan = template => {
     // Go through each team member.
     team.forEach((member, i) => {
-      console.log(member)
       const fullDay = template.full.indexOf(member.role) > -1
 
       // Go through each day of the week.
       Object.keys(member.week).forEach((dow, j) => {
-        console.log(template.days, j)
         const am = 4
         const pm = fullDay ? 4 : 0
 

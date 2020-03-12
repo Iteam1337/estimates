@@ -13,7 +13,7 @@
 	}
 
 	const addTemplate = template => {
-		templates[template].forEach(role => {
+		Templates.Teams[template].forEach(role => {
 			dispatch('addRole', {
 				role
 			})
@@ -35,7 +35,7 @@
 		Eller välj ett färdigt team.
 	</p>
 	<p>
-		{#each Object.keys(templates) as template}
+		{#each Object.keys(Templates.Teams) as template}
 			<button class="available" on:click={() => addTemplate(template)}>{template}</button>
 		{/each}
 	</p>
