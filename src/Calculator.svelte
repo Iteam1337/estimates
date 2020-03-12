@@ -116,7 +116,7 @@
 	}
 </script>
 
-<h2>Roller</h2>
+<h2>Team</h2>
 <hr />
 <Team roles={Roles} on:addRole={addRole} />
 
