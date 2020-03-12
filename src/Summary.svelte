@@ -10,10 +10,3 @@
     Förväntad månadskostnad är <span class="highlight">{summary.rate}</span> kr i veckan.
   </p>
 {/if}
-
-<style>
-  span.highlight {
-    background-color: rgba(71, 253, 164, 0.7);
-    padding: 0px 4px;
-  }
-</style>

@@ -21,7 +21,7 @@
 <style>
   button {
 		border: 0px;
-		background-color: rgba(71, 253, 164, 0.4);
+		background-color: rgba(71, 253, 164, 1);
 		margin: 0 2px;
 		padding: 8px 10px;
 	}

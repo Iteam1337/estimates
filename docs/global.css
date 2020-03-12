@@ -24,17 +24,32 @@ h2 {
 	text-transform: uppercase;
 	font-size: 1.4em;
 	font-weight: 800;
-	margin-top: 50px;
-	margin-bottom: 5px;
+	margin: 50px 0 5px 5px;
+}
+
+h2::before {
+  content: "> ";
+}
+
+h3 {
+	margin-left: 5px;
 }
 
 hr {
-	background-color: rgba(252, 62, 95, 0.4);
+	background-color: rgba(252, 62, 95, 0.2);
 	border: 0;
 	height: 1px;
 	margin-bottom: 30px;
 	margin-top: 0px;
-	width: 200px;
+}
+
+p {
+	margin-left: 10px;
+}
+
+span.highlight {
+	background-color: rgba(71, 253, 164, 0.7);
+	padding: 0px 4px;
 }
 
 a {

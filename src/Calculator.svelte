@@ -128,13 +128,3 @@
 <hr />
 <Week week={week} on:estimateUpdated={summarize} readonly={true} />
 <Summary summary={summary} />
-
-<h2>Information</h2>
-<hr />
-{#each Object.keys(Roles) as role}
-  <h3>{role}</h3>
-  <p>
-    {Roles[role].description}<br /><br />
-    Pris: {Roles[role].rate} kr/h
-  </p>
-{/each}
