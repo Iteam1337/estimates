@@ -126,5 +126,11 @@
 
 <h2>Summering</h2>
 <hr />
-<Week week={week} on:estimateUpdated={summarize} readonly={true} />
-<Summary summary={summary} />
+{#if summary.roles > 0 && summary.hours > 0}
+	<h3>Vad kostar det?</h3><Summary summary={summary} />
+	<h3>Hur ser veckorna ut?</h3><Week week={week} />
+{:else}
+	<p>
+		Här kommer du att se prisexempel för teamet du sätter ihop!
+	</p>
+{/if}

@@ -1,49 +1,38 @@
 <script>
   export let week
-  export let readonly
-
-  import { createEventDispatcher } from 'svelte'
-	const dispatch = createEventDispatcher()
-
-  const validateHours = e => {
-    // TODO: Validate input.
-		dispatch('estimateUpdated', {});
-	}
 </script>
 
 <span class="weekday">
   Måndag<br />
-  <input type="number" bind:value={week.mon.am.hours} on:change={validateHours} readonly={readonly} /><br />
-  <input type="number" bind:value={week.mon.pm.hours} on:change={validateHours} readonly={readonly} /><br />
+  <span class={week.mon.am.hours > 0 ? 'highlight' : ''}>{week.mon.am.hours}</span><br />
+  <span class={week.mon.pm.hours > 0 ? 'highlight' : ''}>{week.mon.pm.hours}</span><br />
 </span>
 <span class="weekday">
   Tisdag<br />
-  <input type="number" bind:value={week.tue.am.hours} on:change={validateHours} readonly={readonly} /><br />
-  <input type="number" bind:value={week.tue.pm.hours} on:change={validateHours} readonly={readonly} /><br />
+  <span class={week.tue.am.hours > 0 ? 'highlight' : ''}>{week.tue.am.hours}</span><br />
+  <span class={week.tue.pm.hours > 0 ? 'highlight' : ''}>{week.tue.pm.hours}</span><br />
 </span>
 <span class="weekday">
   Onsdag<br />
-  <input type="number" bind:value={week.wed.am.hours} on:change={validateHours} readonly={readonly} /><br />
-  <input type="number" bind:value={week.wed.pm.hours} on:change={validateHours} readonly={readonly} /><br />
+  <span class={week.wed.am.hours > 0 ? 'highlight' : ''}>{week.wed.am.hours}</span><br />
+  <span class={week.wed.pm.hours > 0 ? 'highlight' : ''}>{week.wed.pm.hours}</span><br />
 </span>
 <span class="weekday">
   Torsdag<br />
-  <input type="number" bind:value={week.thu.am.hours} on:change={validateHours} readonly={readonly} /><br />
-  <input type="number" bind:value={week.thu.pm.hours} on:change={validateHours} readonly={readonly} /><br />
+  <span class={week.thu.am.hours > 0 ? 'highlight' : ''}>{week.thu.am.hours}</span><br />
+  <span class={week.thu.pm.hours > 0 ? 'highlight' : ''}>{week.thu.pm.hours}</span><br />
 </span>
 <span class="weekday">
   Fredag<br />
-  <input type="number" bind:value={week.fri.am.hours} on:change={validateHours} readonly={readonly} /><br />
-  <input type="number" bind:value={week.fri.pm.hours} on:change={validateHours} readonly={readonly} /><br />
+  <span class={week.fri.am.hours > 0 ? 'highlight' : ''}>{week.fri.am.hours}</span><br />
+  <span class={week.fri.pm.hours > 0 ? 'highlight' : ''}>{week.fri.pm.hours}</span><br />
 </span>
 
 <style>
-  input[type=number] {
-		width: 100px;
-	}
-
-	span.weekday {
+  span.weekday {
 		display: inline-block;
-		margin: 2px 4px;
-	}
+    margin: 2px 10px;
+    text-align: center;
+    vertical-align: center;
+  }
 </style>

@@ -5,14 +5,14 @@
 	const dispatch = createEventDispatcher()
 
   const change = e => {
-    // TODO: Validate input.
 		dispatch('estimateUpdated', {});
   }
 </script>
 
 <span class="weekday">
   Måndag<br />
-  <input type="checkbox" bind:checked={week.mon.am} on:change={change} /><br />
+  <input type="checkbox" bind:checked={week.mon.am} on:change={change} />
+  <br />
   <input type="checkbox" bind:checked={week.mon.pm} on:change={change} /><br />
 </span>
 <span class="weekday">
@@ -39,6 +39,12 @@
 <style>
 	span.weekday {
 		display: inline-block;
-		margin: 2px 4px;
-	}
+    margin: 2px 10px;
+    text-align: center;
+    vertical-align: center;
+  }
+
+  span.weekday input[type=checkbox] {
+    margin: 8px 0 2px 0;
+  }
 </style>
