@@ -2,14 +2,19 @@
   export let state
 
   import Bubble from '../Shared/Bubble.svelte'
-  import { Roles } from '../Data/Roles.js'
 
   import { createEventDispatcher } from 'svelte'
 	const dispatch = createEventDispatcher()
 
   const next = () => {
 		dispatch('step', {
-			step: 'Week',
+			step: 'Start',
+		})
+  }
+
+  const prev = () => {
+		dispatch('step', {
+			step: 'Team',
 		})
   }
 </script>
@@ -70,24 +75,23 @@ div.navigation button {
 
 <div>
   <div class="bubbles">
-    <Bubble alt={''} main={'0 kr'} sub={'per månad'} />
     <Bubble alt={''} main={'1337'} sub={'Teamtaxa'} />
+    <Bubble alt={''} main={'1 dag'} sub={'i veckan'} />
   </div>
 
-  <h1>Hur ser ditt drömteam ut?</h1>
+  <h1>När ska vi jobba ihop?</h1>
 
-  {#each Object.keys(Roles) as role, index}
+  {#each Object.keys(state.week) as day, index}
     <div class="role">
-      <span class="count"><input type="number" bind:value={state.team.roles[role]} /></span>
+      <span class="count"><input type="number" bind:value={state.week[day]} /></span>
       <span class="team">
-        <h2>{role}</h2>
-        <span>{Roles[role].description}</span>
+        <h2>{day}</h2>
       </span>
     </div>
   {/each}
 
   <div class="navigation">
-    <span></span>
+    <span><button on:click={prev}>&lt; Vad behöver du?</button></span>
     <span><button on:click={next}>Hur länge? &gt;</button></span>
   </div>
 </div>

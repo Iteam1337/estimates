@@ -1,6 +1,7 @@
 <script>
   import Hero from './Hero.svelte'
   import Team from './Wizard/Team.svelte'
+  import Week from './Wizard/Week.svelte'
 
   // The state where we store team, schedule etc.
   const state = {
@@ -10,6 +11,13 @@
     },
     team: {
       roles: {},
+    },
+    week: {
+      monday: 0,
+      tuesday: 0,
+      wednesday: 0,
+      thursday: 0,
+      friday: 0,
     },
   }
 
@@ -25,6 +33,10 @@
 
   {#if step === 'Team'}
     <Team state={state} on:step={selectWizardStepEventHandler} />
+  {/if}
+
+  {#if step === 'Week'}
+    <Week state={state} on:step={selectWizardStepEventHandler} />
   {/if}
 </main>
 

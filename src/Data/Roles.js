@@ -4,7 +4,7 @@ export const Roles = {
     rate: 1000,
   },
   'Data Scientist': {
-    description: 'Vi ser till att ',
+    description: 'Vi kan AI.',
     rate: 1200,
   },
   DevOps: {
