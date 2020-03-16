@@ -24,6 +24,10 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   }
 
+  img {
+    margin: 20px 0;
+  }
+
   .bubble span {
     display: block;
   }

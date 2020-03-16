@@ -1,27 +1,31 @@
 <script>
   import Hero from './Hero.svelte'
-
   import Team from './Wizard/Team.svelte'
 
-  import Calculator from './Calculator.svelte'
-  import Information from './Information.svelte'
-  import Menu from './Menu.svelte'
+  // The state where we store team, schedule etc.
+  const state = {
+    summary: {
+      hourly: 0,
+      monthly: 0,
+    },
+    team: {
+      roles: {},
+    },
+  }
 
-  let view = 'Calculator'
-
-  const selectViewEventHandler = ({ detail }) => {
-    view = detail.view
+  // Wizard steps.
+  let step = 'Team'
+  const selectWizardStepEventHandler = ({ detail }) => {
+    step = detail.step
   }
 </script>
 
 <main>
   <Hero />
 
-  <Team />
-  
-
-
-
+  {#if step === 'Team'}
+    <Team state={state} on:step={selectWizardStepEventHandler} />
+  {/if}
 </main>
 
 <style>
@@ -30,8 +34,6 @@
     width: 50%;
     min-width: 600px;
   }
-
-  
 
 	@media (max-width: 640px) {
 		main {
