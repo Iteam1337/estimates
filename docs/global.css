@@ -13,10 +13,12 @@ body {
 }
 
 h1 {
-	color: rgba(252, 62, 95, 1);
-	text-transform: uppercase;
-	font-size: 3em;
-	font-weight: 100;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 36px;
+	line-height: 42px;
+
+	color: #000000;
 }
 
 h2 {

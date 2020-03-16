@@ -1,4 +1,8 @@
 <script>
+  import Hero from './Hero.svelte'
+
+  import Team from './Wizard/Team.svelte'
+
   import Calculator from './Calculator.svelte'
   import Information from './Information.svelte'
   import Menu from './Menu.svelte'
@@ -11,17 +15,13 @@
 </script>
 
 <main>
-  <h1>Priskalkylator</h1>
+  <Hero />
 
-  <Menu view={view} on:selectView={selectViewEventHandler} />
+  <Team />
+  
 
-  {#if view === 'Calculator'}
-    <Calculator />
-  {/if}
 
-  {#if view === 'Information'}
-    <Information />
-  {/if}
+
 </main>
 
 <style>
@@ -31,9 +31,13 @@
     min-width: 600px;
   }
 
+  
+
 	@media (max-width: 640px) {
 		main {
-			width: 100%;
+      margin: 0;
+      width: 100%;
+      min-width: auto;
 		}
 	}
 </style>
