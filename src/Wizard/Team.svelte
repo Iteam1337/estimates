@@ -1,7 +1,7 @@
 <script>
   export let state
 
-  import Bubble from '../Shared/Bubble.svelte'
+  import Bubble from '../components/Bubble.svelte'
   import { Roles } from '../Data/Roles.js'
 
   import { createEventDispatcher } from 'svelte'
