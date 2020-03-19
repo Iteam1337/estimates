@@ -1,26 +1,30 @@
 <script>
   export let state
 
+  import Bubble from '../components/Bubble.svelte'
+  import { Roles } from '../Data/Roles.js'
+
   import { createEventDispatcher } from 'svelte'
 	const dispatch = createEventDispatcher()
 
-  const weekUpdated = () => {
-    sumWeekdays()
+  const addRole = () => {
+    if (state.team.roles[roleSelectedToAdd]) {
+      state.team.roles[roleSelectedToAdd]++
+    } else {
+      state.team.roles[roleSelectedToAdd] = 1
+    }
+
     dispatch('teamUpdated', {})
   }
-
-  const sumWeekdays = () => {
-    state.summary.days = 0
-    Object.keys(state.week).forEach(day => {
-      if (state.week[day]) {
-        state.summary.days++
-      }
-    })
-  }
-  sumWeekdays()
+  
+  let roleSelectedToAdd
 </script>
 
 <style>
+  input[type=number] {
+    width: 80%;
+  }
+
   div.role {
     margin: 20px 0;
     display: flex;
@@ -48,16 +52,5 @@
 </style>
 
 <div>
-  <h1>När ska vi jobba ihop?</h1>
-
-  {#each Object.keys(state.week) as day, index}
-    <div class="role">
-      <span class="count">
-        <input type="checkbox" bind:checked={state.week[day]} on:change={weekUpdated} />
-      </span>
-      <span class="team">
-        <h2>{day}</h2>
-      </span>
-    </div>
-  {/each}
+  <h1>När vill du sätta igång?</h1>
 </div>

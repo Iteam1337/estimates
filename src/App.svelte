@@ -2,11 +2,16 @@
   import Hero from './Hero.svelte'
   import Team from './Wizard/Team.svelte'
   import Week from './Wizard/Week.svelte'
-    
+  import Plan from './Wizard/Plan.svelte'
+
+  import Bubbles from './Bubbles.svelte'
+  import Navigation from './Navigation.svelte'
+
   import { Roles } from './Data/Roles.js'
 
   // The state where we store team, schedule etc.
   const state = {
+    step: 'Team',
     summary: {
       hourly: 0,
       monthly: 0,
@@ -25,9 +30,8 @@
   }
 
   // Wizard steps.
-  let step = 'Team'
   const selectWizardStepEventHandler = ({ detail }) => {
-    step = detail.step
+    state.step = detail.step
   }
 
   // Event handler when team is updated.
@@ -40,18 +44,30 @@
 
     state.summary.monthly = state.summary.hourly * state.summary.days * 4 * 8
   }
+
+  const navigate = ({ detail }) => {
+    console.log(detail)
+    state.step = detail
+  }
 </script>
 
 <main>
   <Hero />
+  <Bubbles state={state} />
 
-  {#if step === 'Team'}
+  {#if state.step === 'Team'}
     <Team state={state} on:step={selectWizardStepEventHandler} on:teamUpdated={teamUpdated} />
   {/if}
 
-  {#if step === 'Week'}
+  {#if state.step === 'Week'}
     <Week state={state} on:step={selectWizardStepEventHandler} on:teamUpdated={teamUpdated} />
   {/if}
+
+  {#if state.step === 'Plan'}
+    <Plan state={state} on:step={selectWizardStepEventHandler} on:teamUpdated={teamUpdated} />
+  {/if}
+
+  <Navigation state={state} on:navigate={navigate} />
 </main>
 
 <style>

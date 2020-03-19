@@ -27,15 +27,6 @@
 </script>
 
 <style>
-  div.bubbles {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: stretch;
-    align-content: stretch;
-  }
-
   input[type=number] {
     width: 80%;
   }
@@ -64,28 +55,9 @@
     align-items: stretch;
     align-content: stretch;
   }
-
-  div.navigation {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-	align-items: stretch;
-  align-content: stretch;
-  margin: 20px 10px;
-}
-
-div.navigation button {
-  border: none;
-}
 </style>
 
 <div>
-  <div class="bubbles">
-    <Bubble alt={''} main={state.summary.monthly + ' kr'} sub={'per månad'} />
-    <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
-  </div>
-
   <h1>Hur ser ditt drömteam ut?</h1>
 
   {#each Object.keys(state.team.roles) as role}
@@ -104,9 +76,4 @@ div.navigation button {
     {/each}
   </select>
   <button on:click={addRole}>Lägg till roll</button>
-
-  <div class="navigation">
-    <span></span>
-    <span><button on:click={next}>Hur länge? &gt;</button></span>
-  </div>
 </div>
