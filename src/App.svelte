@@ -2,12 +2,15 @@
   import Hero from './Hero.svelte'
   import Team from './Wizard/Team.svelte'
   import Week from './Wizard/Week.svelte'
+    
+  import { Roles } from './Data/Roles.js'
 
   // The state where we store team, schedule etc.
   const state = {
     summary: {
       hourly: 0,
       monthly: 0,
+      days: 0,
     },
     team: {
       roles: {},
@@ -26,17 +29,28 @@
   const selectWizardStepEventHandler = ({ detail }) => {
     step = detail.step
   }
+
+  // Event handler when team is updated.
+  const teamUpdated = () => {
+    state.summary.hourly = 0
+    state.summary.monthly = 0
+    Object.keys(state.team.roles).forEach(role => {
+      state.summary.hourly += Roles[role].rate * state.team.roles[role]
+    })
+
+    state.summary.monthly = state.summary.hourly * state.summary.days * 4 * 8
+  }
 </script>
 
 <main>
   <Hero />
 
   {#if step === 'Team'}
-    <Team state={state} on:step={selectWizardStepEventHandler} />
+    <Team state={state} on:step={selectWizardStepEventHandler} on:teamUpdated={teamUpdated} />
   {/if}
 
   {#if step === 'Week'}
-    <Week state={state} on:step={selectWizardStepEventHandler} />
+    <Week state={state} on:step={selectWizardStepEventHandler} on:teamUpdated={teamUpdated} />
   {/if}
 </main>
 

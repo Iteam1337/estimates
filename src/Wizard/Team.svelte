@@ -12,6 +12,18 @@
 			step: 'Week',
 		})
   }
+
+  const addRole = () => {
+    if (state.team.roles[roleSelectedToAdd]) {
+      state.team.roles[roleSelectedToAdd]++
+    } else {
+      state.team.roles[roleSelectedToAdd] = 1
+    }
+
+    dispatch('teamUpdated', {})
+  }
+  
+  let roleSelectedToAdd
 </script>
 
 <style>
@@ -70,13 +82,13 @@ div.navigation button {
 
 <div>
   <div class="bubbles">
-    <Bubble alt={''} main={'0 kr'} sub={'per månad'} />
-    <Bubble alt={''} main={'1337'} sub={'Teamtaxa'} />
+    <Bubble alt={''} main={state.summary.monthly + ' kr'} sub={'per månad'} />
+    <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
   </div>
 
   <h1>Hur ser ditt drömteam ut?</h1>
 
-  {#each Object.keys(Roles) as role, index}
+  {#each Object.keys(state.team.roles) as role}
     <div class="role">
       <span class="count"><input type="number" bind:value={state.team.roles[role]} /></span>
       <span class="team">
@@ -85,6 +97,13 @@ div.navigation button {
       </span>
     </div>
   {/each}
+
+  <select bind:value={roleSelectedToAdd}>
+    {#each Object.keys(Roles) as role, index}
+      <option id={role}>{role}</option>
+    {/each}
+  </select>
+  <button on:click={addRole}>Lägg till roll</button>
 
   <div class="navigation">
     <span></span>
