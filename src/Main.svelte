@@ -56,7 +56,6 @@
     align-items: center;
     justify-content: space-between;
     flex-flow: column nowrap;
-    font-family: monospace;
     z-index: 1;
   }
 
@@ -96,9 +95,43 @@
 
   @media (min-width: 640px) {
     main {
-      margin: 0;
-      width: 100%;
-      min-width: auto;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    div.holster {
+      width: 1200px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-flow: column nowrap;
+    }
+
+    .container {
+      display: flex;
+      flex: none;
+    }
+
+    .container.x {
+      flex-flow: row nowrap;
+    }
+
+    .x.mandatory-scroll-snapping {
+      scroll-snap-type: none;
+    }
+
+    .container > div {
+      text-align: center;
+      flex: none;
+    }
+
+    .x.container > div {
+      width: 400px;
+    }
+
+    .mobile {
+      display: none;
     }
   }
 </style>
@@ -114,17 +147,21 @@
             alt={''}
             main={state.summary.monthly + ' kr'}
             sub={'per månad'} />
-          <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
+          <span class="mobile">
+            <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
+          </span>
         </div>
         <Team {state} on:teamUpdated={teamUpdated} />
       </div>
       <div>
         <div class="bubbles">
           <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
-          <Bubble
-            alt={''}
-            main={state.summary.days + ' dagar'}
-            sub={'i veckan'} />
+          <span class="mobile">
+            <Bubble
+              alt={''}
+              main={state.summary.days + ' dagar'}
+              sub={'i veckan'} />
+          </span>
         </div>
         <Week {state} on:teamUpdated={teamUpdated} />
       </div>

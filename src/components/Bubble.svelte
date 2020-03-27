@@ -4,12 +4,6 @@
   export let sub
 </script>
 
-<div class="bubble">
-  <span><img src="/cuppSass.png" alt={alt} /></span>
-  <span class="main">{main}</span>
-  <span>{sub}</span>
-</div>
-
 <style>
   .bubble {
     margin-top: 65%;
@@ -36,4 +30,19 @@
     margin-top: 20px;
     font-weight: 800;
   }
+
+  @media (min-width: 640px) {
+    .bubble {
+      margin-top: 400px;
+      width: 150px;
+    }
+  }
 </style>
+
+<div class="bubble">
+  <span>
+    <img src="/cuppSass.png" {alt} />
+  </span>
+  <span class="main">{main}</span>
+  <span>{sub}</span>
+</div>

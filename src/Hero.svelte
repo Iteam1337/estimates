@@ -16,14 +16,13 @@
 
   @media (min-width: 640px) {
     #hero {
-      position: absolute;
-      margin: 35px auto;
-      width: 100%;
-      height: 50%;
-      left: 50;
+      margin: 0 auto;
+      height: 500px;
       top: -20px;
 
       background: url('/hero.png');
+      background-repeat: no-repeat;
+      background-size: cover;
       mix-blend-mode: normal;
       opacity: 0.8;
       border-radius: 28px;
