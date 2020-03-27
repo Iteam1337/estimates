@@ -4,7 +4,7 @@
   import Week from './Wizard/Week.svelte'
   import Plan from './Wizard/Plan.svelte'
 
-  import Bubbles from './Bubbles.svelte'
+  import Bubble from './components/Bubble.svelte'
   import Navigation from './Navigation.svelte'
 
   import { Roles } from './Data/Roles.js'
@@ -91,6 +91,15 @@
     width: 100%;
   }
 
+  div.bubbles {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: stretch;
+  }
+
   @media (min-width: 640px) {
     main {
       margin: 0;
@@ -106,28 +115,42 @@
   <div class="holster">
     <div class="container x mandatory-scroll-snapping" dir="ltr">
       <div>
-        <Bubbles {state} />
+        <div class="bubbles">
+          <Bubble
+            alt={''}
+            main={state.summary.monthly + ' kr'}
+            sub={'per månad'} />
+          <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
+        </div>
         <Team
           {state}
           on:step={selectWizardStepEventHandler}
           on:teamUpdated={teamUpdated} />
       </div>
       <div>
-        <Bubbles {state} />
+        <div class="bubbles">
+          <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
+          <Bubble
+            alt={''}
+            main={state.summary.days + ' dagar'}
+            sub={'i veckan'} />
+        </div>
         <Week
           {state}
           on:step={selectWizardStepEventHandler}
           on:teamUpdated={teamUpdated} />
       </div>
       <div>
-        <Bubbles {state} />
+        <div class="bubbles">
+          <Bubble
+            alt={''}
+            main={state.summary.days + ' dagar'}
+            sub={'i veckan'} />
+        </div>
         <Plan
           {state}
           on:step={selectWizardStepEventHandler}
           on:teamUpdated={teamUpdated} />
-      </div>
-      <div>
-        <Bubbles {state} />
       </div>
     </div>
   </div>
