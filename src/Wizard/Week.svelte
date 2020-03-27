@@ -2,7 +2,15 @@
   export let state
 
   import { createEventDispatcher } from 'svelte'
-	const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher()
+
+  const weekLabels = {
+    monday: 'Måndag',
+    tuesday: 'Tisdag',
+    wednesday: 'Onsdag',
+    thursday: 'Torsdag',
+    friday: 'Fredag',
+  }
 
   const weekUpdated = () => {
     sumWeekdays()
@@ -53,10 +61,14 @@
   {#each Object.keys(state.week) as day, index}
     <div class="role">
       <span class="count">
-        <input type="checkbox" bind:checked={state.week[day]} on:change={weekUpdated} />
+        <input
+          type="checkbox"
+          bind:checked={state.week[day]}
+          on:change={weekUpdated}
+          id={day} />
       </span>
       <span class="team">
-        <h2>{day}</h2>
+        <label for={day}>{weekLabels[day]}</label>
       </span>
     </div>
   {/each}

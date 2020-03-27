@@ -29,11 +29,6 @@
     },
   }
 
-  // Wizard steps.
-  const selectWizardStepEventHandler = ({ detail }) => {
-    state.step = detail.step
-  }
-
   // Event handler when team is updated.
   const teamUpdated = () => {
     state.summary.hourly = 0
@@ -122,10 +117,7 @@
             sub={'per månad'} />
           <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
         </div>
-        <Team
-          {state}
-          on:step={selectWizardStepEventHandler}
-          on:teamUpdated={teamUpdated} />
+        <Team {state} on:teamUpdated={teamUpdated} />
       </div>
       <div>
         <div class="bubbles">
@@ -135,10 +127,7 @@
             main={state.summary.days + ' dagar'}
             sub={'i veckan'} />
         </div>
-        <Week
-          {state}
-          on:step={selectWizardStepEventHandler}
-          on:teamUpdated={teamUpdated} />
+        <Week {state} on:teamUpdated={teamUpdated} />
       </div>
       <div>
         <div class="bubbles">
@@ -147,10 +136,7 @@
             main={state.summary.days + ' dagar'}
             sub={'i veckan'} />
         </div>
-        <Plan
-          {state}
-          on:step={selectWizardStepEventHandler}
-          on:teamUpdated={teamUpdated} />
+        <Plan {state} on:teamUpdated={teamUpdated} />
       </div>
     </div>
   </div>
