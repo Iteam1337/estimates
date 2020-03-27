@@ -1,25 +1,30 @@
-html, body {
-	height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-	color: #404040;
-	margin: 0;
-	padding: 8px;
-	box-sizing: border-box;
-	font-family: 'Roboto', sans-serif;
+  color: #404040;
+  margin: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
-h1, h2, h3, h4, h5 {
-	font-style: normal;
-	font-weight: bold;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-style: normal;
+  font-weight: bold;
 }
 
 h1 {
-	font-size: 36px;
-	color: rgba(0, 0, 0 1);
+  font-size: 32px;
+  color: rgba(0, 0, 0 1);
 }
 
 h2 {
-	color: rgba(0, 0, 0, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
