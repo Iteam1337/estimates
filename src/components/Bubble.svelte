@@ -2,6 +2,7 @@
   export let alt
   export let main
   export let sub
+  export let mobileOnly
 </script>
 
 <style>
@@ -36,10 +37,14 @@
       margin-top: 400px;
       width: 150px;
     }
+
+    .mobileOnly {
+      display: none;
+    }
   }
 </style>
 
-<div class="bubble">
+<div class="bubble {mobileOnly ? 'mobileOnly' : ''}">
   <span>
     <img src="/cuppSass.png" {alt} />
   </span>

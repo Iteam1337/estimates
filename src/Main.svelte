@@ -106,6 +106,7 @@
       align-items: center;
       justify-content: space-between;
       flex-flow: column nowrap;
+      z-index: 1;
     }
 
     .container {
@@ -147,21 +148,22 @@
             alt={''}
             main={state.summary.monthly + ' kr'}
             sub={'per månad'} />
-          <span class="mobile">
-            <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
-          </span>
+          <Bubble
+            alt={''}
+            main={state.summary.hourly}
+            sub={'Teamtaxa'}
+            mobileOnly={true} />
         </div>
         <Team {state} on:teamUpdated={teamUpdated} />
       </div>
       <div>
         <div class="bubbles">
           <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
-          <span class="mobile">
-            <Bubble
-              alt={''}
-              main={state.summary.days + ' dagar'}
-              sub={'i veckan'} />
-          </span>
+          <Bubble
+            alt={''}
+            main={state.summary.days + ' dagar'}
+            sub={'i veckan'}
+            mobileOnly={true} />
         </div>
         <Week {state} on:teamUpdated={teamUpdated} />
       </div>
