@@ -5,7 +5,7 @@
   import { Roles } from '../Data/Roles.js'
 
   import { createEventDispatcher } from 'svelte'
-	const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher()
 
   const addRole = () => {
     if (state.team.roles[roleSelectedToAdd]) {
@@ -16,12 +16,12 @@
 
     dispatch('teamUpdated', {})
   }
-  
+
   let roleSelectedToAdd
 </script>
 
 <style>
-  input[type=number] {
+  input[type='number'] {
     width: 80%;
   }
 
@@ -53,4 +53,8 @@
 
 <div>
   <h1>När vill du sätta igång?</h1>
+  <ul>
+    <li>Nästa vecka</li>
+    <li>Om en månad</li>
+  </ul>
 </div>
