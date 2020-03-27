@@ -5,7 +5,6 @@
   import Plan from './Wizard/Plan.svelte'
 
   import Bubble from './components/Bubble.svelte'
-  import Navigation from './Navigation.svelte'
 
   import { Roles } from './Data/Roles.js'
 

@@ -53,6 +53,11 @@
     align-items: stretch;
     align-content: stretch;
   }
+
+  label {
+    font-size: 20px;
+    font-weight: 800;
+  }
 </style>
 
 <div>
