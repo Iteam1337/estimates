@@ -42,6 +42,16 @@
     console.log(detail)
     state.step = detail
   }
+
+  let meow = 0
+
+  setInterval(() => {
+    meow = document.getElementById('holster').scrollLeft
+  }, 2000)
+
+  const swipe = direction => {
+    document.getElementById('holster').scrollLeft += 400 * direction
+  }
 </script>
 
 <style>
@@ -92,6 +102,20 @@
     align-content: stretch;
   }
 
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: stretch;
+    border-top: 1px #efefef solid;
+  }
+
+  .navigation > span {
+    margin: 20px;
+  }
+
   @media (min-width: 640px) {
     main {
       margin: 0 auto;
@@ -135,6 +159,10 @@
     .mobile {
       display: none;
     }
+
+    .navigation {
+      display: none;
+    }
   }
 </style>
 
@@ -142,7 +170,7 @@
   <Hero />
 
   <div class="holster">
-    <div class="container x mandatory-scroll-snapping" dir="ltr">
+    <div class="container x mandatory-scroll-snapping" id="holster" dir="ltr">
       <div>
         <div class="bubbles">
           <Bubble
@@ -178,5 +206,14 @@
         <Plan {state} on:teamUpdated={teamUpdated} />
       </div>
     </div>
+  </div>
+
+  <div class="navigation">
+    <span>
+      <button on:click={() => swipe(-1)}>Bakåt</button>
+    </span>
+    <span>
+      <button on:click={() => swipe(1)}>Nästa</button>
+    </span>
   </div>
 </main>

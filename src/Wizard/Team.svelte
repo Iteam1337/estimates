@@ -41,6 +41,14 @@
     dispatch('teamUpdated', {})
   }
 
+  const teamUpdated = role => {
+    if (isNaN(state.team.roles[role])) {
+      state.team.roles[role] = 0
+    }
+
+    dispatch('teamUpdated', {})
+  }
+
   let roleSelectedToAdd
 </script>
 
@@ -56,12 +64,12 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: stretch;
-    align-content: stretch;
+    align-content: left;
   }
 
   span.count {
     width: 20%;
-    margin-top: 10px;
+    margin: 5px 10px;
   }
 
   span.team {
@@ -71,7 +79,11 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: stretch;
-    align-content: stretch;
+    text-align: left;
+  }
+
+  span.team h2 {
+    margin: 0;
   }
 </style>
 
@@ -81,7 +93,10 @@
   {#each Object.keys(state.team.roles) as role}
     <div class="role">
       <span class="count">
-        <input type="number" bind:value={state.team.roles[role]} />
+        <input
+          type="number"
+          bind:value={state.team.roles[role]}
+          on:keyup={() => teamUpdated(role)} />
       </span>
       <span class="team">
         <h2>{role}</h2>

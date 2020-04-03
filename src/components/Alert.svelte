@@ -12,8 +12,7 @@
     z-index: 2;
     border-radius: 10px;
     align-content: center;
-    margin-top: 20px;
-    margin-left: 10%;
+    margin: 20px 7%;
     padding: 10px;
   }
 
@@ -23,6 +22,7 @@
 
   .fixed p {
     margin-top: 2px;
+    padding: 0 15px;
   }
 </style>
 
