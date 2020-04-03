@@ -60,7 +60,7 @@
   }
 </style>
 
-<div>
+<div class="week">
   <h1>När ska vi jobba ihop?</h1>
 
   {#each Object.keys(state.week) as day, index}

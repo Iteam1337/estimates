@@ -98,7 +98,9 @@
       max-width: 1200px;
     }
 
-    div.holster {
+    .holster {
+      position: absolute;
+      top: 350px;
       width: 1200px;
       height: 100%;
       display: flex;

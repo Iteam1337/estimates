@@ -17,9 +17,12 @@
 
   @media (min-width: 640px) {
     #hero {
+      position: relative;
       margin: 0 auto;
       height: 500px;
       top: -20px;
+      width: 1200px;
+      max-width: 1200px;
 
       background: url('/hero.png');
       background-repeat: no-repeat;

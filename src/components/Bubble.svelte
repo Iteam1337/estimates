@@ -34,7 +34,7 @@
 
   @media (min-width: 640px) {
     .bubble {
-      margin-top: 400px;
+      margin-top: 0;
       width: 150px;
     }
 

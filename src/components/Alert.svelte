@@ -8,12 +8,13 @@
     background-color: #ffcffa;
     bottom: 0px;
     height: 200px;
-    width: 100%;
+    width: 80%;
     z-index: 2;
     border-radius: 10px;
     align-content: center;
     margin-top: 20px;
-    padding-top: 10px;
+    margin-left: 10%;
+    padding: 10px;
   }
 
   .fixed h2 {
