@@ -43,12 +43,6 @@
     state.step = detail
   }
 
-  let meow = 0
-
-  setInterval(() => {
-    meow = document.getElementById('holster').scrollLeft
-  }, 2000)
-
   const swipe = direction => {
     document.getElementById('holster').scrollLeft += 400 * direction
   }
@@ -66,6 +60,7 @@
     justify-content: space-between;
     flex-flow: column nowrap;
     z-index: 1;
+    margin-bottom: 100px;
   }
 
   .container {
@@ -103,6 +98,13 @@
   }
 
   .navigation {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+
+    background-color: white;
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -156,10 +158,6 @@
       width: 400px;
     }
 
-    .mobile {
-      display: none;
-    }
-
     .navigation {
       display: none;
     }
@@ -210,10 +208,10 @@
 
   <div class="navigation">
     <span>
-      <button on:click={() => swipe(-1)}>Bakåt</button>
+      <button on:click={() => swipe(-1)}>&lt;</button>
     </span>
     <span>
-      <button on:click={() => swipe(1)}>Nästa</button>
+      <button on:click={() => swipe(1)}>&gt;</button>
     </span>
   </div>
 </main>
