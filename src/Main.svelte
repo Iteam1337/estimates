@@ -3,7 +3,6 @@
   import Team from './Wizard/Team.svelte'
   import Week from './Wizard/Week.svelte'
   import Plan from './Wizard/Plan.svelte'
-
   import Bubble from './components/Bubble.svelte'
 
   import { Roles } from './Data/Roles.js'

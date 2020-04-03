@@ -2,16 +2,19 @@
   export let state
 
   import Bubble from '../components/Bubble.svelte'
+  import Alert from '../components/Alert.svelte'
   import { Roles } from '../Data/Roles.js'
 
   import { createEventDispatcher } from 'svelte'
-	const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher()
 
   const next = () => {
-		dispatch('step', {
-			step: 'Week',
-		})
+    dispatch('step', {
+      step: 'Week',
+    })
   }
+
+  let teamCoachWarningVisible = false
 
   const addRole = () => {
     if (state.team.roles[roleSelectedToAdd]) {
@@ -20,14 +23,29 @@
       state.team.roles[roleSelectedToAdd] = 1
     }
 
+    const addedRoles = Object.keys(state.team.roles)
+    let toggleTeamCoachWarning = false
+
+    if (addedRoles.length > 0) {
+      toggleTeamCoachWarning = true
+    }
+
+    addedRoles.forEach(role => {
+      if (role === 'TeamCoach') {
+        toggleTeamCoachWarning = false
+      }
+    })
+
+    teamCoachWarningVisible = toggleTeamCoachWarning
+
     dispatch('teamUpdated', {})
   }
-  
+
   let roleSelectedToAdd
 </script>
 
 <style>
-  input[type=number] {
+  input[type='number'] {
     width: 80%;
   }
 
@@ -62,7 +80,9 @@
 
   {#each Object.keys(state.team.roles) as role}
     <div class="role">
-      <span class="count"><input type="number" bind:value={state.team.roles[role]} /></span>
+      <span class="count">
+        <input type="number" bind:value={state.team.roles[role]} />
+      </span>
       <span class="team">
         <h2>{role}</h2>
         <span>{Roles[role].description}</span>
@@ -76,4 +96,10 @@
     {/each}
   </select>
   <button on:click={addRole}>Lägg till roll</button>
+
+  {#if teamCoachWarningVisible}
+    <Alert
+      heading={'Kom ihåg teamcoachen!'}
+      text={'Varje team behöver ha en teamcoach. Det är en viktig roll som både stöttar dig och teamet i att få ett effektivt och kreativt arbetssätt.'} />
+  {/if}
 </div>
