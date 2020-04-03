@@ -6,7 +6,8 @@
     left: 0;
     top: -20px;
 
-    background: url('/hero.png');
+    background: url('/hero-mobile.png');
+    background-repeat: no-repeat;
     mix-blend-mode: normal;
     opacity: 0.8;
     border-radius: 28px;

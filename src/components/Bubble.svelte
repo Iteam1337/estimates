@@ -7,7 +7,7 @@
 
 <style>
   .bubble {
-    margin-top: 65%;
+    margin-top: 55%;
     width: 40%;
     background-color: #ffffff;
     z-index: 1;
