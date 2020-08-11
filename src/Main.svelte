@@ -1,5 +1,8 @@
 <script>
+  import page from 'page'
+
   import Header from './Wizard/Header.svelte'
+  import Footer from './Wizard/Footer.svelte'
   import Team from './Wizard/Team.svelte'
   import Week from './Wizard/Week.svelte'
   import Plan from './Wizard/Plan.svelte'
@@ -46,6 +49,16 @@
   const swipe = direction => {
     document.getElementById('holster').scrollLeft += 400 * direction
   }
+
+  /**
+   * Routing
+   */
+  let current = Team
+  page('/', () => (current = Team))
+  page('/team', () => (current = Team))
+  page('/week', () => (current = Week))
+  page('/plan', () => (current = Plan))
+  page.start()
 </script>
 
 <style>
@@ -165,51 +178,8 @@
 
 <main>
   <Header />
-  <div class="holster">
-    <div class="container x mandatory-scroll-snapping" id="holster" dir="ltr">
-      <div>
-        <div class="bubbles">
-          <Bubble
-            alt={''}
-            main={state.summary.monthly + ' kr'}
-            sub={'per månad'} />
-          <Bubble
-            alt={''}
-            main={state.summary.hourly}
-            sub={'Teamtaxa'}
-            mobileOnly={true} />
-        </div>
-        <Team {state} on:teamUpdated={teamUpdated} />
-      </div>
-      <div>
-        <div class="bubbles">
-          <Bubble alt={''} main={state.summary.hourly} sub={'Teamtaxa'} />
-          <Bubble
-            alt={''}
-            main={state.summary.days + ' dagar'}
-            sub={'i veckan'}
-            mobileOnly={true} />
-        </div>
-        <Week {state} on:teamUpdated={teamUpdated} />
-      </div>
-      <div>
-        <div class="bubbles">
-          <Bubble
-            alt={''}
-            main={state.summary.days + ' dagar'}
-            sub={'i veckan'} />
-        </div>
-        <Plan {state} on:teamUpdated={teamUpdated} />
-      </div>
-    </div>
-  </div>
 
-  <div class="navigation">
-    <span>
-      <button on:click={() => swipe(-1)}>&lt;</button>
-    </span>
-    <span>
-      <button on:click={() => swipe(1)}>&gt;</button>
-    </span>
-  </div>
+  <svelte:component this={current} {state} on:teamUpdated={teamUpdated} />
+
+  <Footer />
 </main>
