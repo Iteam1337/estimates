@@ -1,5 +1,5 @@
 <script>
-  import Hero from './Hero.svelte'
+  import Header from './Wizard/Header.svelte'
   import Team from './Wizard/Team.svelte'
   import Week from './Wizard/Week.svelte'
   import Plan from './Wizard/Plan.svelte'
@@ -121,7 +121,6 @@
   @media (min-width: 640px) {
     main {
       margin: 0 auto;
-      max-width: 1200px;
     }
 
     .holster {
@@ -165,8 +164,7 @@
 </style>
 
 <main>
-  <Hero />
-
+  <Header />
   <div class="holster">
     <div class="container x mandatory-scroll-snapping" id="holster" dir="ltr">
       <div>
