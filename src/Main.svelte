@@ -64,114 +64,17 @@
 <style>
   main {
     width: 100%;
-  }
-
-  div.holster {
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-flow: column nowrap;
-    z-index: 1;
-    margin-bottom: 100px;
-  }
-
-  .container {
-    display: flex;
-    overflow: auto;
-    flex: none;
-  }
-
-  .container.x {
-    width: 100%;
-    flex-flow: row nowrap;
-  }
-
-  .x.mandatory-scroll-snapping {
-    scroll-snap-type: x mandatory;
-  }
-
-  .container > div {
-    text-align: center;
-    scroll-snap-align: center;
-    flex: none;
-  }
-
-  .x.container > div {
-    width: 100%;
-  }
-
-  div.bubbles {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: stretch;
-    align-content: stretch;
-  }
-
-  .navigation {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-
-    background-color: white;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-end;
-    align-content: stretch;
-    border-top: 1px #efefef solid;
-  }
-
-  .navigation > span {
-    margin: 20px;
+    background-color: var(--light-gray);
+    background-image: url('/teambild.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   @media (min-width: 640px) {
     main {
       margin: 0 auto;
-    }
-
-    .holster {
-      position: absolute;
-      top: 350px;
-      width: 1200px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-flow: column nowrap;
-      z-index: 1;
-    }
-
-    .container {
-      display: flex;
-      flex: none;
-    }
-
-    .container.x {
-      flex-flow: row nowrap;
-    }
-
-    .x.mandatory-scroll-snapping {
-      scroll-snap-type: none;
-    }
-
-    .container > div {
-      text-align: center;
-      flex: none;
-    }
-
-    .x.container > div {
-      width: 400px;
-    }
-
-    .navigation {
-      display: none;
+      max-width: 1000px;
     }
   }
 </style>

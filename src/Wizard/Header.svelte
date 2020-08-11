@@ -15,6 +15,8 @@
 
   div {
     border-bottom: 1px black solid;
+    background-color: rgba(240, 240, 240, 0.9);
+
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

@@ -1,6 +1,7 @@
 <style>
   div.footer {
     position: absolute;
+    background-color: rgba(240, 240, 240, 0.9);
     bottom: 0;
     width: 100%;
     border-top: 1px black solid;

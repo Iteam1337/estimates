@@ -80,22 +80,30 @@
   .round input[type='checkbox']:checked + label:after {
     opacity: 1;
   }
+
+  div.week {
+    background-color: rgba(240, 240, 240, 0.8);
+    height: 100%;
+  }
 </style>
 
-<h1>När ska vi jobba ihop?</h1>
+<div class="week">
 
-{#each Object.keys(state.week) as day, index}
-  <div class="week">
-    <span class="count round">
-      <input
-        type="checkbox"
-        bind:checked={state.week[day]}
-        on:change={weekUpdated}
-        id={day} />
-      <label for={day} />
-    </span>
-    <span class="day">
-      <h2>{weekLabels[day]}</h2>
-    </span>
-  </div>
-{/each}
+  <h3>När ska vi jobba ihop?</h3>
+
+  {#each Object.keys(state.week) as day, index}
+    <div class="week">
+      <span class="count round">
+        <input
+          type="checkbox"
+          bind:checked={state.week[day]}
+          on:change={weekUpdated}
+          id={day} />
+        <label for={day} />
+      </span>
+      <span class="day">
+        <h2>{weekLabels[day]}</h2>
+      </span>
+    </div>
+  {/each}
+</div>

@@ -85,10 +85,15 @@
   span.team h2 {
     margin: 0;
   }
+
+  div.team {
+    background-color: rgba(240, 240, 240, 0.8);
+    height: 100%;
+  }
 </style>
 
-<div>
-  <h1>Hur ser ditt drömteam ut?</h1>
+<div class="team">
+  <h3>Hur ser ditt drömteam ut?</h3>
 
   {#each Object.keys(state.team.roles) as role}
     <div class="role">

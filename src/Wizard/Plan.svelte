@@ -49,10 +49,15 @@
     align-items: stretch;
     align-content: stretch;
   }
+
+  div.plan {
+    background-color: rgba(240, 240, 240, 0.8);
+    height: 100%;
+  }
 </style>
 
-<div>
-  <h1>När vill du sätta igång?</h1>
+<div class="plan">
+  <h3>När vill du sätta igång?</h3>
   <ul>
     <li>Nästa vecka</li>
     <li>Om en månad</li>
