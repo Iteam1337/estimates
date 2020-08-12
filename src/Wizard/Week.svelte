@@ -100,7 +100,7 @@
 
 <div class="menu">
   <ul>
-    <li class="h desktop">Vecka</li>
+    <li class="h desktop">När vill du jobba?</li>
     <li>
       <a
         class:active={week.monday.active}

@@ -100,7 +100,7 @@
 </style>
 
 <div class="team">
-  <h3>Team</h3>
+  <h3>Hur ska teamet se ut?</h3>
   <p>
     Här sätter du ihop de kompetenser du behöver för att lösa de utmaningar du
     står inför. En TeamCoach behövs i varje konstellation, dennes roll är att
@@ -125,7 +125,8 @@
           <input
             type="number"
             bind:value={state.team.roles[role]}
-            on:keyup={() => teamUpdated(role)} />
+            on:keyup={() => teamUpdated(role)}
+            on:change={() => teamUpdated(role)} />
         </span>
       </div>
     {/each}
