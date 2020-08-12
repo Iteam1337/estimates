@@ -22,7 +22,7 @@
         'Agil Coach': 0,
         Backend: 1,
         'Data Scientist': 0,
-        DevOps: 0,
+        'DevOps Engineer': 0,
         Frontend: 2,
         TeamCoach: 1,
         'UX-Designer': 1,
