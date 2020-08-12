@@ -27,5 +27,4 @@
 <div>
   <h1>Iteam</h1>
   <h2 class="desktop">Hur ser ditt drömteam ut?</h2>
-  <h2 class="mobile">Skapa team</h2>
 </div>

@@ -80,6 +80,13 @@
     padding: 2em;
   }
 
+  span.hilite {
+    background-color: var(--cornflower);
+    color: var(--white);
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+  }
+
   @media (max-width: 640px) {
     div.team {
       text-align: center;
@@ -97,9 +104,13 @@
   <p>
     Här sätter du ihop de kompetenser du behöver för att lösa de utmaningar du
     står inför. En TeamCoach behövs i varje konstellation, dennes roll är att
-    säkerställa leveransen från vår sida. TeamCoachen ser till att både teamet
-    och du som produktägare har de materiella och mentala resurser som behövs
-    för att teamet ska fungera optimalt.
+    säkerställa leveransen. Teamet du tittar på just nu arbetar
+    <span class="hilite">{state.summary.days}</span>
+    dagar i veckan och kostar
+    <span class="hilite">{state.summary.hourly}</span>
+    kr i timmen, eller
+    <span class="hilite">{state.summary.monthly}</span>
+    kr i månaden.
   </p>
 
   <div class="roles">

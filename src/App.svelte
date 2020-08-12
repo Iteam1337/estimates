@@ -2,8 +2,6 @@
   import page from 'page'
 
   import Header from './Wizard/Header.svelte'
-  import Footer from './Wizard/Footer.svelte'
-  import Menu from './Wizard/Menu.svelte'
   import Team from './Wizard/Team.svelte'
   import Week from './Wizard/Week.svelte'
   import Plan from './Wizard/Plan.svelte'
@@ -17,22 +15,22 @@
     summary: {
       hourly: 0,
       monthly: 0,
-      days: 0,
+      days: 2,
     },
     team: {
       roles: {
         'Agil Coach': 0,
-        Backend: 0,
+        Backend: 1,
         'Data Scientist': 0,
         DevOps: 0,
-        Frontend: 0,
-        TeamCoach: 0,
-        'UX-Designer': 0,
+        Frontend: 2,
+        TeamCoach: 1,
+        'UX-Designer': 1,
       },
     },
     week: {
-      monday: 0,
-      tuesday: 0,
+      monday: 1,
+      tuesday: 2,
       wednesday: 0,
       thursday: 0,
       friday: 0,
@@ -48,8 +46,6 @@
     })
 
     state.summary.monthly = state.summary.hourly * state.summary.days * 4 * 8
-
-    console.log(state.team.roles)
   }
 
   const navigate = ({ detail }) => {
@@ -61,6 +57,7 @@
     document.getElementById('holster').scrollLeft += 400 * direction
   }
 
+  teamUpdated()
   /**
    * Routing
    */
@@ -87,7 +84,6 @@
 
 <main>
   <Header />
-  <Menu />
+  <Week {state} on:teamUpdated={teamUpdated} />
   <svelte:component this={current} {state} on:teamUpdated={teamUpdated} />
-  <Footer {state} />
 </main>

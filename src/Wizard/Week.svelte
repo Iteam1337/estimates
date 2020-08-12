@@ -4,12 +4,23 @@
   import { createEventDispatcher } from 'svelte'
   const dispatch = createEventDispatcher()
 
-  const weekLabels = {
-    monday: 'Måndag',
-    tuesday: 'Tisdag',
-    wednesday: 'Onsdag',
-    thursday: 'Torsdag',
-    friday: 'Fredag',
+  const week = {
+    monday: { label: 'Måndag', active: true },
+    tuesday: { label: 'Tisdag', active: true },
+    wednesday: { label: 'Onsdag', active: false },
+    thursday: { label: 'Torsdag', active: false },
+    friday: { label: 'Fredag', active: false },
+  }
+
+  const toggle = day => {
+    state.week[day] = !state.week[day]
+
+    week[day].active = state.week[day] ? true : false
+    week = week
+    console.log(week[day])
+
+    sumWeekdays()
+    dispatch('teamUpdated', {})
   }
 
   const weekUpdated = () => {
@@ -29,80 +40,116 @@
 </script>
 
 <style>
-  div.weekdays {
+  div.menu {
+    background-color: var(--midnight-sand);
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    align-items: stretch;
+    align-items: flex-end;
     align-content: stretch;
+    color: var(--sproud);
   }
 
-  span.day {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: stretch;
-    text-align: left;
+  a,
+  a:visited {
+    color: var(--sproud);
+    text-decoration: none;
+    padding: 0.5em;
   }
 
-  .round {
-    width: 20%;
-    position: relative;
-    margin: 8px 0 0 15px;
+  a.active,
+  a:visited.active {
+    background-color: var(--cornflower);
   }
 
-  .round label {
-    background-color: var(--white);
-    border: 1px solid var(--grålera);
-    border-radius: 50%;
-    cursor: pointer;
-    height: 50px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 50px;
-  }
-
-  .round input[type='checkbox'] {
-    visibility: hidden;
-  }
-
-  .round input[type='checkbox']:checked + label {
-    background-color: var(--green);
-    border-color: var(--green);
-  }
-
-  .round input[type='checkbox']:checked + label:after {
-    opacity: 1;
-  }
-
-  div.week {
+  a:hover {
     background-color: var(--sproud);
-    padding: 2em;
+    color: var(--midnight-sand);
+  }
+
+  ul {
+    font-size: 1em;
+    margin-left: 1em;
+    padding-left: 1em;
+  }
+
+  li {
+    display: inline;
+    text-align: center;
+  }
+
+  li.h {
+    font-weight: 100;
+    font-size: 1.6em;
+    margin-right: 2em;
+  }
+
+  @media (max-width: 640px) {
+    ul {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .desktop {
+      display: none;
+    }
   }
 </style>
 
-<div class="week">
-  <h3>Vecka</h3>
-  <p>När ska vi jobba ihop?</p>
-
-  {#each Object.keys(state.week) as day, index}
-    <div class="weekdays">
-      <span class="count round">
-        <input
-          type="checkbox"
-          bind:checked={state.week[day]}
-          on:change={weekUpdated}
-          id={day} />
-        <label for={day} />
-      </span>
-      <span class="day">
-        <h2>{weekLabels[day]}</h2>
-      </span>
-    </div>
-  {/each}
+<div class="menu">
+  <ul>
+    <li class="h desktop">Vecka</li>
+    <li>
+      <a
+        class:active={week.monday.active}
+        on:click={() => {
+          toggle('monday')
+        }}>
+        <span class="desktop">Måndag</span>
+        <span class="mobile">Må</span>
+      </a>
+    </li>
+    <li>
+      <a
+        class:active={week.tuesday.active}
+        on:click={() => {
+          toggle('tuesday')
+        }}>
+        <span class="desktop">Tisdag</span>
+        <span class="mobile">Ti</span>
+      </a>
+    </li>
+    <li>
+      <a
+        class:active={week.wednesday.active}
+        on:click={() => {
+          toggle('wednesday')
+        }}>
+        <span class="desktop">Onsdag</span>
+        <span class="mobile">On</span>
+      </a>
+    </li>
+    <li>
+      <a
+        class:active={week.thursday.active}
+        on:click={() => {
+          toggle('thursday')
+        }}>
+        <span class="desktop">Torsdag</span>
+        <span class="mobile">To</span>
+      </a>
+    </li>
+    <li>
+      <a
+        class:active={week.friday.active}
+        on:click={() => {
+          toggle('friday')
+        }}>
+        <span class="desktop">Fredag</span>
+        <span class="mobile">Fr</span>
+      </a>
+    </li>
+  </ul>
 </div>
