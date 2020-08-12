@@ -89,5 +89,5 @@
   <Header />
   <Menu />
   <svelte:component this={current} {state} on:teamUpdated={teamUpdated} />
-  <Footer />
+  <Footer {state} />
 </main>
