@@ -49,18 +49,26 @@
     dispatch('teamUpdated', {})
   }
 
+  const add = (role, c) => {
+    if (isNaN(state.team.roles[role])) {
+      state.team.roles[role] = 0
+    } else if (state.team.roles[role] === 0 && c < 1) {
+      state.team.roles[role] = 0
+    } else {
+      state.team.roles[role] += c
+    }
+
+    dispatch('teamUpdated', {})
+  }
+
   let roleSelectedToAdd
 </script>
 
 <style>
-  input[type='number'] {
-    width: 3em;
-  }
-
   div.role {
     background-color: var(--angry-clouds);
     border-radius: 1px;
-    box-shadow: 3px 6px var(--grålera);
+    box-shadow: 3px 6px var(--midnight-sand);
     color: var(--crow-feathers);
     display: inline-block;
     font-weight: 300;
@@ -70,9 +78,16 @@
     width: 400px;
   }
 
-  span.count {
-    width: 20%;
-    margin: 5px 10px;
+  p {
+    font-weight: 100;
+  }
+
+  p.active {
+    font-weight: 300;
+  }
+
+  h4.active {
+    font-weight: 400;
   }
 
   div.team {
@@ -115,18 +130,17 @@
 
   <div class="roles">
     {#each Object.keys(state.team.roles) as role}
-      <div class="role">
+      <div class="role" class:active={state.team.roles[role]}>
         <span class="team">
-          <h4>{role}</h4>
-          <span>{Roles[role].description}</span>
-        </span>
+          <h4 class:active={state.team.roles[role]}>
+            {role}
+            {#if state.team.roles[role]}({state.team.roles[role]}){/if}
+          </h4>
 
-        <span class="count">
-          <input
-            type="number"
-            bind:value={state.team.roles[role]}
-            on:keyup={() => teamUpdated(role)}
-            on:change={() => teamUpdated(role)} />
+          <p class:active={state.team.roles[role]}>{Roles[role].description}</p>
+
+          <button on:click={() => add(role, 1)}>+</button>
+          <button on:click={() => add(role, -1)}>-</button>
         </span>
       </div>
     {/each}
