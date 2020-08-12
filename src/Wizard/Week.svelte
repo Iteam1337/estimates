@@ -29,8 +29,7 @@
 </script>
 
 <style>
-  div.week {
-    margin: 20px 0;
+  div.weekdays {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -57,8 +56,8 @@
   }
 
   .round label {
-    background-color: #ffffff;
-    border: 2px solid #aaaaaa;
+    background-color: var(--white);
+    border: 1px solid var(--grålera);
     border-radius: 50%;
     cursor: pointer;
     height: 50px;
@@ -73,8 +72,8 @@
   }
 
   .round input[type='checkbox']:checked + label {
-    background-color: #66bb6a;
-    border-color: #66bb6a;
+    background-color: var(--green);
+    border-color: var(--green);
   }
 
   .round input[type='checkbox']:checked + label:after {
@@ -82,17 +81,17 @@
   }
 
   div.week {
-    background-color: rgba(240, 240, 240, 0.8);
-    height: 100%;
+    background-color: var(--sproud);
+    padding: 2em;
   }
 </style>
 
 <div class="week">
-
-  <h3>När ska vi jobba ihop?</h3>
+  <h3>Vecka</h3>
+  <p>När ska vi jobba ihop?</p>
 
   {#each Object.keys(state.week) as day, index}
-    <div class="week">
+    <div class="weekdays">
       <span class="count round">
         <input
           type="checkbox"
