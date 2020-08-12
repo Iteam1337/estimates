@@ -3,6 +3,7 @@
 
   import Header from './Wizard/Header.svelte'
   import Footer from './Wizard/Footer.svelte'
+  import Menu from './Wizard/Menu.svelte'
   import Team from './Wizard/Team.svelte'
   import Week from './Wizard/Week.svelte'
   import Plan from './Wizard/Plan.svelte'
@@ -19,7 +20,15 @@
       days: 0,
     },
     team: {
-      roles: {},
+      roles: {
+        'Agil Coach': 0,
+        Backend: 0,
+        'Data Scientist': 0,
+        DevOps: 0,
+        Frontend: 0,
+        TeamCoach: 0,
+        'UX-Designer': 0,
+      },
     },
     week: {
       monday: 0,
@@ -39,6 +48,8 @@
     })
 
     state.summary.monthly = state.summary.hourly * state.summary.days * 4 * 8
+
+    console.log(state.team.roles)
   }
 
   const navigate = ({ detail }) => {
@@ -65,25 +76,18 @@
   main {
     width: 100%;
     height: 100%;
-    background-image: url('/teambild.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: 0 4px 8px 0 var(--midnight-sand),
-      0 6px 20px 0 var(--midnight-sand);
   }
 
   @media (min-width: 640px) {
     main {
-      margin: 0 auto;
-      max-width: 1000px;
+      margin: 0;
     }
   }
 </style>
 
 <main>
   <Header />
-
+  <Menu />
   <svelte:component this={current} {state} on:teamUpdated={teamUpdated} />
-
   <Footer />
 </main>

@@ -13,11 +13,11 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-color: var(--angry-clouds);
+  background-color: var(--grålera);
 }
 
 body {
-  color: #404040;
+  color: var(--crow-feathers);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -30,20 +30,33 @@ h3,
 h4,
 h5 {
   font-style: normal;
-  font-weight: bold;
+  font-weight: 100;
 }
 
 h1 {
-  font-size: 32px;
-  color: rgba(0, 0, 0 1);
+  font-size: 2em;
+  color: var(--midnight-sand);
 }
 
 h2 {
-  color: rgba(0, 0, 0, 0.9);
+  font-size: 1.8em;
+  color: var(--midnight-sand);
 }
 
 h3 {
+  font-size: 1.6em;
   margin-top: 0;
+}
+
+h4 {
+  font-size: 1.4em;
+  margin: 0 0 0.5em 0;
+  color: var(--crow-feathers);
+  font-weight: 100;
+}
+
+p {
+  font-weight: 300;
 }
 
 @media (min-width: 640px) {

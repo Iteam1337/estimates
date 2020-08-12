@@ -54,17 +54,20 @@
 
 <style>
   input[type='number'] {
-    width: 80%;
+    width: 3em;
   }
 
   div.role {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: left;
+    background-color: var(--angry-clouds);
+    border-radius: 1px;
+    box-shadow: 3px 6px var(--grålera);
+    color: var(--crow-feathers);
+    display: inline-block;
+    font-weight: 300;
+    margin: 16px 0 0 32px;
+    padding: 8px;
+    vertical-align: top;
+    width: 400px;
   }
 
   span.count {
@@ -72,50 +75,50 @@
     margin: 5px 10px;
   }
 
-  span.team {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    text-align: left;
-  }
-
-  span.team h2 {
-    margin: 0;
-  }
-
   div.team {
-    background-color: rgba(240, 240, 240, 0.8);
-    height: 100%;
+    background-color: var(--sproud);
+    padding: 2em;
+  }
+
+  @media (max-width: 640px) {
+    div.team {
+      text-align: center;
+    }
+
+    div.role {
+      width: 100%;
+      margin: 1em auto;
+    }
   }
 </style>
 
 <div class="team">
-  <h3>Hur ser ditt drömteam ut?</h3>
+  <h3>Team</h3>
+  <p>
+    Här sätter du ihop de kompetenser du behöver för att lösa de utmaningar du
+    står inför. En TeamCoach behövs i varje konstellation, dennes roll är att
+    säkerställa leveransen från vår sida. TeamCoachen ser till att både teamet
+    och du som produktägare har de materiella och mentala resurser som behövs
+    för att teamet ska fungera optimalt.
+  </p>
 
-  {#each Object.keys(state.team.roles) as role}
-    <div class="role">
-      <span class="count">
-        <input
-          type="number"
-          bind:value={state.team.roles[role]}
-          on:keyup={() => teamUpdated(role)} />
-      </span>
-      <span class="team">
-        <h2>{role}</h2>
-        <span>{Roles[role].description}</span>
-      </span>
-    </div>
-  {/each}
+  <div class="roles">
+    {#each Object.keys(state.team.roles) as role}
+      <div class="role">
+        <span class="team">
+          <h4>{role}</h4>
+          <span>{Roles[role].description}</span>
+        </span>
 
-  <select bind:value={roleSelectedToAdd}>
-    {#each Object.keys(Roles) as role, index}
-      <option id={role}>{role}</option>
+        <span class="count">
+          <input
+            type="number"
+            bind:value={state.team.roles[role]}
+            on:keyup={() => teamUpdated(role)} />
+        </span>
+      </div>
     {/each}
-  </select>
-  <button on:click={addRole}>Lägg till roll</button>
+  </div>
 
   {#if teamCoachWarningVisible}
     <Alert

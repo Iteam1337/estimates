@@ -14,9 +14,7 @@
   }
 
   div {
-    border-bottom: 1px black solid;
-    background-color: rgba(240, 240, 240, 0.9);
-
+    background-color: var(--sproud);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -29,5 +27,5 @@
 <div>
   <h1>Iteam</h1>
   <h2 class="desktop">Hur ser ditt drömteam ut?</h2>
-  <h2 class="mobile">Drömteam</h2>
+  <h2 class="mobile">Skapa team</h2>
 </div>
