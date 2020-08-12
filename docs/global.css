@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400&display=swap');
 
 :root {
-  --light-gray: #f7f7f7;
+  --crow-feathers: #1c2321;
+  --sproud: #eef1ef;
+  --angry-clouds: #b2bfc2;
+  --grålera: #909da1;
+  --midnight-sand: #6f7f88;
   --cornflower: #668cff;
 }
 
@@ -9,7 +13,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-color: var(--cornflower);
+  background-color: var(--angry-clouds);
 }
 
 body {

@@ -65,10 +65,11 @@
   main {
     width: 100%;
     height: 100%;
-    background-color: var(--light-gray);
     background-image: url('/teambild.jpg');
     background-position: center;
     background-repeat: no-repeat;
+    box-shadow: 0 4px 8px 0 var(--midnight-sand),
+      0 6px 20px 0 var(--midnight-sand);
   }
 
   @media (min-width: 640px) {
