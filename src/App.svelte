@@ -1,6 +1,4 @@
 <script>
-  import page from 'page'
-
   import Header from './Wizard/Header.svelte'
   import Team from './Wizard/Team.svelte'
   import Week from './Wizard/Week.svelte'
@@ -48,15 +46,6 @@
   }
 
   teamUpdated()
-  /**
-   * Routing
-   */
-  let current = Team
-  page('/', () => (current = Team))
-  page('/team', () => (current = Team))
-  page('/week', () => (current = Week))
-  page('/plan', () => (current = Plan))
-  page.start()
 </script>
 
 <style>
@@ -75,5 +64,5 @@
 <main>
   <Header />
   <Week {state} on:teamUpdated={teamUpdated} />
-  <svelte:component this={current} {state} on:teamUpdated={teamUpdated} />
+  <Team {state} on:teamUpdated={teamUpdated} />
 </main>
