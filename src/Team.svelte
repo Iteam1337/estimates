@@ -48,10 +48,6 @@
   }
 
   p {
-    font-weight: 100;
-  }
-
-  p.active {
     font-weight: 300;
   }
 
@@ -145,7 +141,7 @@
             {#if state.team.roles[role]}({state.team.roles[role]}){/if}
           </h4>
 
-          <p class:active={state.team.roles[role]}>{Roles[role].description}</p>
+          <p>{Roles[role].description}</p>
 
           <p>Timtaxa: {Roles[role].rate} kr</p>
 
