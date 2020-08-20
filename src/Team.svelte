@@ -147,6 +147,8 @@
 
           <p class:active={state.team.roles[role]}>{Roles[role].description}</p>
 
+          <p>Timtaxa: {Roles[role].rate} kr</p>
+
           <button on:click={() => add(role, -1)}>-</button>
           <button on:click={() => add(role, 1)}>+</button>
         </span>
