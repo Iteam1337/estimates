@@ -100,6 +100,8 @@
     color: var(--white);
     padding-left: 0.2em;
     padding-right: 0.2em;
+    font-weight: 600;
+    border-radius: 2px;
   }
 
   @media (max-width: 640px) {
