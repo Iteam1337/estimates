@@ -12,7 +12,7 @@
     step: 'Team',
     summary: {
       hourly: 0,
-      monthly: 0,
+      weekly: 0,
       days: 2,
     },
     team: {
@@ -37,12 +37,11 @@
   // Event handler when team is updated.
   const teamUpdated = () => {
     state.summary.hourly = 0
-    state.summary.monthly = 0
     Object.keys(state.team.roles).forEach(role => {
       state.summary.hourly += Roles[role].rate * state.team.roles[role]
     })
 
-    state.summary.monthly = state.summary.hourly * state.summary.days * 4 * 8
+    state.summary.weekly = state.summary.hourly * state.summary.days * 8
   }
 
   teamUpdated()

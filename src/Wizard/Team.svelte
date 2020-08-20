@@ -124,10 +124,8 @@
     säkerställa leveransen. Teamet du tittar på just nu arbetar
     <span class="hilite">{state.summary.days}</span>
     dagar i veckan och kostar
-    <span class="hilite">{state.summary.hourly}</span>
-    kr i timmen, eller
-    <span class="hilite">{state.summary.monthly}</span>
-    kr i månaden.
+    <span class="hilite">{state.summary.weekly}</span>
+    kr i veckan.
   </p>
 
   <div class="roles">
