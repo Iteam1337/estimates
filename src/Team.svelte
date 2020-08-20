@@ -125,8 +125,8 @@
 
           <p class:active={state.team.roles[role]}>{Roles[role].description}</p>
 
-          <button on:click={() => add(role, 1)}>+</button>
           <button on:click={() => add(role, -1)}>-</button>
+          <button on:click={() => add(role, 1)}>+</button>
         </span>
       </div>
     {/each}
