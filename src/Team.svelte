@@ -102,6 +102,18 @@
     border-radius: 2px;
   }
 
+  .hidden {
+    display: none;
+  }
+
+  .warning {
+    background-color: var(--red);
+    padding: 0.2em 0.4em;
+    font-weight: 600;
+    color: var(--white);
+    border-radius: 2px;
+  }
+
   @media (max-width: 640px) {
     div.team {
       text-align: center;
@@ -124,6 +136,11 @@
     dagar i veckan och kostar
     <span class="hilite">{state.summary.weekly}</span>
     kr i veckan.
+  </p>
+
+  <p class="warning" class:hidden={state.team.roles['TeamCoach'] > 0}>
+    Just nu saknar teamet en TeamCoach. Kom ihåg att den här rollen behövs i
+    varje team!
   </p>
 
   <div class="roles">
