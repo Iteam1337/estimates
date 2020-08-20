@@ -12,33 +12,6 @@
     })
   }
 
-  let teamCoachWarningVisible = false
-
-  const addRole = () => {
-    if (state.team.roles[roleSelectedToAdd]) {
-      state.team.roles[roleSelectedToAdd]++
-    } else {
-      state.team.roles[roleSelectedToAdd] = 1
-    }
-
-    const addedRoles = Object.keys(state.team.roles)
-    let toggleTeamCoachWarning = false
-
-    if (addedRoles.length > 0) {
-      toggleTeamCoachWarning = true
-    }
-
-    addedRoles.forEach(role => {
-      if (role === 'TeamCoach') {
-        toggleTeamCoachWarning = false
-      }
-    })
-
-    teamCoachWarningVisible = toggleTeamCoachWarning
-
-    dispatch('teamUpdated', {})
-  }
-
   const teamUpdated = role => {
     if (isNaN(state.team.roles[role])) {
       state.team.roles[role] = 0
@@ -58,8 +31,6 @@
 
     dispatch('teamUpdated', {})
   }
-
-  let roleSelectedToAdd
 </script>
 
 <style>
@@ -161,9 +132,4 @@
     {/each}
   </div>
 
-  {#if teamCoachWarningVisible}
-    <Alert
-      heading={'Kom ihåg teamcoachen!'}
-      text={'Varje team behöver ha en teamcoach. Det är en viktig roll som både stöttar dig och teamet i att få ett effektivt och kreativt arbetssätt.'} />
-  {/if}
 </div>
