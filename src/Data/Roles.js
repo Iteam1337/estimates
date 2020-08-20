@@ -1,9 +1,4 @@
 export const Roles = {
-  'Agil Coach': {
-    description:
-      'En stöttepelare till dig som produktägare samt övriga teammedlemmar. Hjälper teamet att utröna vad som är viktigt i varje steg och att bryta ner komplicerade problem i mindre delar.',
-    rate: 2400,
-  },
   Backend: {
     description:
       'Utvecklare som arbetar på allt som sitter under huven. De bygger t.ex. systemen som en smartphone-app kommunicerar med och där data lagras, eller där ditt system integrerar mot andra.',

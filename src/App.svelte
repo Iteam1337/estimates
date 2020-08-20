@@ -19,7 +19,6 @@
     },
     team: {
       roles: {
-        'Agil Coach': 0,
         Backend: 1,
         'Data Scientist': 0,
         'DevOps Engineer': 0,
