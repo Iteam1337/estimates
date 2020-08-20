@@ -26,7 +26,7 @@ export const Roles = {
   },
   'UX-Designer': {
     description:
-      'Vi arbetar med frågorna "hur" och "varför". Vårt mål är att alla i teamet ska förstå slutanvändarna och deras behov så väl att vi kan empatisera med dem..',
+      'Vi arbetar med frågorna "hur" och "varför". Vårt mål är att alla i teamet ska förstå slutanvändarna och deras behov så väl att vi kan empatisera med dem.',
     rate: 1200,
   },
 }
