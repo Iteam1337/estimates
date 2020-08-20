@@ -47,15 +47,6 @@
     state.summary.monthly = state.summary.hourly * state.summary.days * 4 * 8
   }
 
-  const navigate = ({ detail }) => {
-    console.log(detail)
-    state.step = detail
-  }
-
-  const swipe = direction => {
-    document.getElementById('holster').scrollLeft += 400 * direction
-  }
-
   teamUpdated()
   /**
    * Routing
