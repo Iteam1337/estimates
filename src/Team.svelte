@@ -85,6 +85,18 @@
     border-radius: 2px;
   }
 
+  .sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+  }
+
+  .solid {
+    background-color: var(--sproud);
+    padding: 1em;
+    width: 100%;
+  }
+
   @media (max-width: 640px) {
     div.team {
       text-align: center;
@@ -102,7 +114,18 @@
   <p>
     Här sätter du ihop de kompetenser du behöver för att lösa de utmaningar du
     står inför. En TeamCoach behövs i varje konstellation, dennes roll är att
-    säkerställa leveransen. Teamet du tittar på just nu arbetar
+    säkerställa leveransen.
+    <span class="desktop">
+      Teamet du tittar på just nu arbetar
+      <span class="hilite">{state.summary.days}</span>
+      dagar i veckan och kostar
+      <span class="hilite">{state.summary.weekly}</span>
+      kr i veckan.
+    </span>
+  </p>
+
+  <p class="sticky solid mobile">
+    Teamet du tittar på just nu arbetar
     <span class="hilite">{state.summary.days}</span>
     dagar i veckan och kostar
     <span class="hilite">{state.summary.weekly}</span>
