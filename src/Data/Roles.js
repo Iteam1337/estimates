@@ -1,32 +1,32 @@
 export const Roles = {
   Backend: {
     description:
-      'Utvecklare som arbetar på allt som sitter under huven. De bygger t.ex. systemen som en smartphone-app kommunicerar med och där data lagras, eller där ditt system integrerar mot andra.',
+      'Vi bygger allt som sitter under huven, t.ex. system, integrationer och datalagring bakom en app eller webb.',
     rate: 1000,
   },
   'Data Scientist': {
     description:
-      'Analytiker som arbetar i gränslandet mellan matematik och programmering. En data scientist behövs när du vill bearbeta stora mängder data och kunna hitta samband, upptäcka mönster och fatta beslut som vi människor skulle ha svårt att se.',
+      'Vi arbetar i gränslandet mellan matematik och programmering. Vi kan hjälpa till med allt från att hitta samband och mönster i stora mängder data till att bygga system som tränas upp och själva lär sig att fatta beslut.',
     rate: 1200,
   },
   'DevOps Engineer': {
     description:
-      'Ofta en utvecklare, ser till att alla tekniska delar sitter ihop och att teamet kan leverera snabbt och felsäkert.',
-    rate: 1200,
+      'Vi ser till att alla tekniska delar sitter ihop och att nya funktioner kan levereras till användarna snabbt och felsäkert.',
+    rate: 1000,
   },
   Frontend: {
     description:
-      'Utvecklare som bygger allt som användare kan se och ta på - appar, webbar och program. De har ofta en god känsla för färg och form och arbetar nära UX för att ta fram gränssnitt som användarna älskar.',
+      'Vi bygger allt som användare kan se och ta på - appar, webbar och program. Vi älskar färg, form och funktionalitet. Ofta arbetar vi nära UX för att ta fram gränssnitt som användarna älskar.',
     rate: 1000,
   },
   TeamCoach: {
     description:
-      'Säkerställer leveransen och ser till att alla i teamet mår bra.',
+      'Vi följer teamet från start till avslut och hjälper dig bygga ett högpresterande, välmående och autonomt team. Vi stöttar även dig i rollen som produktägare.',
     rate: 1500,
   },
   'UX-Designer': {
     description:
-      'UX arbetar med frågorna "hur" och "varför". De sörjer för att alla i teamet ska kunna empatisera med slutanvändarna.',
+      'Vi arbetar med frågorna "hur" och "varför". Vårt mål är att alla i teamet ska förstå slutanvändarna och deras behov så väl att vi kan empatisera med dem..',
     rate: 1200,
   },
 }
