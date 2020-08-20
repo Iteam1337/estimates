@@ -113,8 +113,7 @@
   <h3>Hur ska teamet se ut?</h3>
   <p>
     Här sätter du ihop de kompetenser du behöver för att lösa de utmaningar du
-    står inför. En TeamCoach behövs i varje konstellation, dennes roll är att
-    säkerställa leveransen.
+    står inför.
     <span class="desktop">
       Teamet du tittar på just nu arbetar
       <span class="hilite">{state.summary.days}</span>
