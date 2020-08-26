@@ -34,6 +34,15 @@
 </script>
 
 <style>
+  div.roles {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+  }
+
   div.role {
     background-color: var(--angry-clouds);
     border-radius: 1px;
@@ -42,17 +51,13 @@
     display: inline-block;
     font-weight: 300;
     margin: 16px 0 0 32px;
-    padding: 8px;
+    padding: 0;
     vertical-align: top;
     width: 400px;
   }
 
   p {
     font-weight: 300;
-  }
-
-  h4.active {
-    font-weight: 400;
   }
 
   div.team {
@@ -93,6 +98,44 @@
     width: 100%;
   }
 
+  div.role > .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+    height: 100%;
+  }
+
+  .sub {
+    background-color: var(--cornflower);
+    color: var(--white);
+    font-weight: 500;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  .sub > p {
+    font-weight: 600;
+  }
+
+  h4,
+  p {
+    margin: 8px;
+  }
+
+  button {
+    height: 2.5em;
+    width: 2.5em;
+    margin: 4px;
+    font-weight: 800;
+  }
+
   @media (max-width: 640px) {
     div.team {
       text-align: center;
@@ -102,11 +145,17 @@
       width: 100%;
       margin: 1em auto;
     }
+
+    button {
+      height: 2em;
+      width: 2em;
+      margin: 4px;
+    }
   }
 </style>
 
 <div class="team">
-  <h3>Hur ska teamet se ut?</h3>
+  <h3>Hur ser ditt drömteam ut?</h3>
   <p>
     Här sätter du ihop de kompetenser du behöver för att lösa de utmaningar du
     står inför.
@@ -135,19 +184,25 @@
   <div class="roles">
     {#each Object.keys(state.team.roles) as role}
       <div class="role" class:active={state.team.roles[role]}>
-        <span class="team">
-          <h4 class:active={state.team.roles[role]}>
-            {role}
-            {#if state.team.roles[role]}({state.team.roles[role]}){/if}
-          </h4>
+        <div class="container">
+          <div>
+            <h4 class:active={state.team.roles[role]}>
+              {role}
+              {#if state.team.roles[role]}({state.team.roles[role]}){/if}
+            </h4>
 
-          <p>{Roles[role].description}</p>
+            <p>{Roles[role].description}</p>
 
-          <p>Timtaxa: {Roles[role].rate} kr</p>
-
-          <button on:click={() => add(role, -1)}>-</button>
-          <button on:click={() => add(role, 1)}>+</button>
-        </span>
+            <p>Timtaxa: {Roles[role].rate} kr</p>
+          </div>
+          <div class="sub">
+            <p>Antal: {state.team.roles[role]}</p>
+            <span>
+              <button on:click={() => add(role, -1)}>-</button>
+              <button on:click={() => add(role, 1)}>+</button>
+            </span>
+          </div>
+        </div>
       </div>
     {/each}
   </div>
